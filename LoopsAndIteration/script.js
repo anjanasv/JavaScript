@@ -38,3 +38,8 @@ for(var j=0; j<Mary.length;j++){
     console.log(Mary[j]);
 }
 
+//Backward Loop
+
+for(var m= Mary.length-1; m >=0; m--){
+    console.log(Mary[m]);
+}
