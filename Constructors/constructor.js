@@ -123,6 +123,8 @@ console.log(hRate);
 
 */
 
+/*********************************************************************
+
 //functions returning functions
 
 function interviewQus(job){
@@ -153,3 +155,89 @@ designerQus('monkey');
 devQues('Vasavi');
 
 interviewQus('teacher')('Vasu');
+*/
+
+/**************************************************************************************
+// IIFE(immediatie invoke function expression)
+// A game with hiding score
+
+(function () {
+    var k = Math.random()* 10;
+    console.log( k >= 5); // we will win when we get 5(true)
+
+})();
+//console.log(k); here as we are not displaying the score(k). it is an error
+
+//with argument
+
+(function (ele) {
+    var k = Math.random()* 10;
+    console.log( k >= 5-ele); // we will win always(true)
+
+})(5);
+*/
+
+
+/*********************************************************************************************
+
+//Closures
+
+function interviewQus(job){
+    return function(name){ // here we are using job variable from outer function which is a concept called closure
+    if(job === 'teacher'){
+            console.log('Your a teacher' +  name);
+        }
+    else if ( job === 'designer'){
+            console.log('Your a designer' + name);
+    }
+    else {
+            console.log('Are you a developer' + name);
+    }
+}
+}
+
+var devQues = interviewQus('developer');
+    devQues('Anjana');
+var teacherQus = interviewQus('teacher');
+teacherQus('Vasavi');
+var designerQus = interviewQus('designer');
+designerQus('donkey');
+designerQus('monkey');
+devQues('Vasavi');
+
+*/
+
+//********************************************************************************************************
+
+// Bind,apply and call 
+
+var john = {
+    name: 'john',
+    job: 'mentor',
+    age: 30,
+    presentation: function(style, day){
+        if (style === 'formal'){
+            console.log('good ' + day + ' all. ' + ' i am '+ this.name + ' and my profession is ' + this.job + '.');
+        }
+        else if (style === 'friend'){
+            console.log('hey ' + ' i am '+ this.name + ' and my profession is ' + this.job + '. Have a nice ' + day);
+        }
+    }
+    
+}
+
+var jame = {
+    name: 'jame',
+    job: 'designer'
+}
+john.presentation('formal','morning');
+
+john.presentation.call(jame, 'friend','evening');
+
+//john.presentation.apply(jame, 'friend','evening');
+
+var jameFrien = john.presentation.bind(jame, 'friend');
+jameFrien('afeternoon');
+jameFrien('night');
+
+
